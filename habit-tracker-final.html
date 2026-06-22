@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moje nawyki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#e8e2d8;min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:2rem 1rem;font-family:'Inter',sans-serif;}
+.cv{background:#f2ede4;border-radius:20px;padding:2.5rem 2rem 2rem;position:relative;overflow:hidden;width:100%;max-width:500px;box-shadow:0 8px 40px rgba(80,60,20,0.10);}
+.paint-bg{position:absolute;inset:0;border-radius:20px;pointer-events:none;}
+.header{position:relative;display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:2rem;z-index:2;}
+.eyebrow{font-family:'Inter',sans-serif;font-weight:300;font-size:10px;letter-spacing:0.2em;color:#9a8e78;text-transform:uppercase;margin-bottom:8px;}
+.main-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:34px;font-weight:300;font-style:italic;color:#2d2619;letter-spacing:0.01em;line-height:1;}
+.date-line{font-family:'Inter',sans-serif;font-weight:300;font-size:11px;color:#9a8e78;margin-top:6px;letter-spacing:0.05em;text-transform:capitalize;}
+.reset-btn{font-family:'Inter',sans-serif;font-size:10px;font-weight:300;color:#b0a48e;background:none;border:none;cursor:pointer;text-decoration:underline;text-underline-offset:3px;letter-spacing:0.05em;padding-top:4px;}
+.reset-btn:hover{color:#7a6e5a;}
+.garden-wrap{display:flex;justify-content:center;margin:0 0 2rem;position:relative;z-index:2;}
+.flower-caption{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:#8a7e6a;text-align:center;margin-top:10px;min-height:20px;letter-spacing:0.03em;}
+.divider{height:0.5px;background:rgba(100,80,40,0.12);margin:0 0 1.5rem;position:relative;z-index:2;}
+.habits{display:flex;flex-direction:column;gap:6px;position:relative;z-index:2;}
+.hcard{background:rgba(255,252,246,0.75);border:0.5px solid #ddd5c4;border-radius:14px;padding:14px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:border-color 0.2s,background 0.2s;-webkit-tap-highlight-color:transparent;}
+.hcard:hover{background:rgba(255,252,248,0.95);border-color:#c8b89a;}
+.hcard.done{background:rgba(234,245,228,0.8);border-color:#b8d4aa;}
+.hcircle{width:34px;height:34px;border-radius:50%;border:0.5px solid #d5c9b4;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;background:rgba(255,255,255,0.6);transition:all 0.2s;}
+.hcard.done .hcircle{background:#5a8a50;border-color:#5a8a50;}
+.hcard.done .hcircle .hicon{display:none;}
+.hchk{display:none;color:#fff;font-size:13px;}
+.hcard.done .hchk{display:block;}
+.hinfo{flex:1;min-width:0;}
+.hname{font-family:'Inter',sans-serif;font-weight:300;font-size:13px;color:#2d2619;margin-bottom:6px;letter-spacing:0.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.hcard.done .hname{color:#3d6e38;}
+.hdots{display:flex;gap:4px;}
+.hdot{width:5px;height:5px;border-radius:50%;background:#ddd5c4;flex-shrink:0;}
+.hdot.on{background:#7aab68;}
+.hdot.cur{border:0.5px solid #b0a48e;background:transparent;}
+.hstreak{text-align:right;flex-shrink:0;}
+.hstreak-num{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:#2d2619;line-height:1;}
+.hstreak-num.hot{color:#b85820;}
+.hstreak-lbl{font-family:'Inter',sans-serif;font-weight:300;font-size:9px;color:#9a8e78;margin-top:2px;letter-spacing:0.06em;text-transform:uppercase;}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:1.5rem;position:relative;z-index:2;}
+.scard{background:rgba(255,252,246,0.75);border:0.5px solid #ddd5c4;border-radius:10px;padding:12px 8px;text-align:center;}
+.snum{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:#2d2619;line-height:1;}
+.slbl{font-family:'Inter',sans-serif;font-weight:300;font-size:9px;color:#9a8e78;margin-top:4px;line-height:1.4;text-transform:uppercase;letter-spacing:0.08em;}
+@media(max-width:400px){
+  .main-title{font-size:28px;}
+  .hname{font-size:12px;}
+  .stats{gap:5px;}
+  .scard{padding:10px 5px;}
+}
+</style>
+</head>
+<body>
+<div class="cv">
+<svg class="paint-bg" viewBox="0 0 680 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <defs><filter id="pb"><feGaussianBlur stdDeviation="42"/></filter></defs>
+  <ellipse cx="580" cy="80" rx="200" ry="130" fill="#d4c8a0" filter="url(#pb)" opacity="0.35"/>
+  <ellipse cx="80" cy="200" rx="160" ry="110" fill="#b8d4a0" filter="url(#pb)" opacity="0.25"/>
+  <ellipse cx="560" cy="750" rx="180" ry="120" fill="#c8b880" filter="url(#pb)" opacity="0.2"/>
+  <ellipse cx="100" cy="700" rx="140" ry="90" fill="#a8c890" filter="url(#pb)" opacity="0.18"/>
+  <ellipse cx="340" cy="450" rx="220" ry="160" fill="#e8d8b0" filter="url(#pb)" opacity="0.12"/>
+</svg>
+
+<div class="header">
+  <div>
+    <div class="eyebrow">Tracker nawyków</div>
+    <div class="main-title">Moje nawyki</div>
+    <div class="date-line" id="date-lbl"></div>
+  </div>
+  <button class="reset-btn" onclick="resetDay()">resetuj dzień</button>
+</div>
+
+<div class="garden-wrap">
+  <div style="display:flex;flex-direction:column;align-items:center;">
+    <svg id="flower-svg" width="200" height="180" viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg" aria-label="Kwiatek rosnący z postępem nawyków"></svg>
+    <div class="flower-caption" id="flower-msg">zasiej pierwszy nawyk…</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+<div class="habits" id="habits"></div>
+
+<div class="stats">
+  <div class="scard"><div class="snum" id="s-done">0</div><div class="slbl">dziś<br>zrobione</div></div>
+  <div class="scard"><div class="snum">8</div><div class="slbl">wszystkich<br>nawyków</div></div>
+  <div class="scard"><div class="snum" id="s-best">0</div><div class="slbl">najlepszy<br>streak</div></div>
+  <div class="scard"><div class="snum" id="s-pct">0%</div><div class="slbl">ukończono<br>dziś</div></div>
+</div>
+</div>
+
+<script>
+const HABITS=[
+  {id:'czytanie',name:'Czytanie książki',icon:'📖'},
+  {id:'cwiczenia',name:'Ćwiczenia (20–30 min)',icon:'🏃'},
+  {id:'medytacja',name:'Medytacja',icon:'🧘'},
+  {id:'planowanie',name:'Planowanie dnia',icon:'📋'},
+  {id:'ekran',name:'Wyłączanie ekranu przed północą',icon:'🌑'},
+  {id:'jezyk',name:'Nauka języka',icon:'🗣️'},
+  {id:'sen8',name:'8h snu',icon:'😴'},
+  {id:'nosocial',name:'Brak social mediów do 12:00',icon:'🚫'},
+];
+const TOTAL=HABITS.length;
+const todayKey=()=>new Date().toISOString().slice(0,10);
+const today=todayKey();
+let state={days:{}};
+
+function loadState(){
+  try{const r=localStorage.getItem('habit_light_final');if(r)state=JSON.parse(r);}catch(e){}
+  if(!state.days)state.days={};
+  if(!state.days[today])state.days[today]={};
+}
+function saveState(){
+  try{localStorage.setItem('habit_light_final',JSON.stringify(state));}catch(e){}
+}
+
+function streak(id){let n=0;const d=new Date();while(true){const k=d.toISOString().slice(0,10);if(state.days[k]&&state.days[k][id]){n++;d.setDate(d.getDate()-1);}else break;}return n;}
+function bestStreak(id){const keys=Object.keys(state.days).sort();let best=0,cur=0,prev=null;for(const k of keys){if(state.days[k]&&state.days[k][id]){cur=prev&&(new Date(k)-new Date(prev))/86400000===1?cur+1:1;if(cur>best)best=cur;prev=k;}else{cur=0;prev=null;}}return best;}
+function last7(id){return Array.from({length:7},(_,i)=>{const d=new Date();d.setDate(d.getDate()-(6-i));const k=d.toISOString().slice(0,10);return{done:!!(state.days[k]&&state.days[k][id]),isToday:i===6};});}
+
+function toggle(id){state.days[today][id]=!state.days[today][id];saveState();render();}
+function resetDay(){state.days[today]={};saveState();render();}
+
+function blob(cx,cy,r,n,seed){
+  const pts=[];
+  for(let i=0;i<n;i++){const a=(i/n)*Math.PI*2;const rr=r+Math.sin(seed+i*2.1)*r*0.2+Math.cos(seed*1.5+i*1.3)*r*0.1;pts.push([cx+Math.cos(a)*rr,cy+Math.sin(a)*rr]);}
+  let d=`M${pts[0][0].toFixed(1)},${pts[0][1].toFixed(1)}`;
+  for(let i=0;i<pts.length;i++){const p0=pts[(i-1+pts.length)%pts.length],p1=pts[i],p2=pts[(i+1)%pts.length];const c1x=(p0[0]+p1[0])/2,c1y=(p0[1]+p1[1])/2,c2x=(p1[0]+p2[0])/2,c2y=(p1[1]+p2[1])/2;d+=`C${c1x.toFixed(1)},${c1y.toFixed(1)} ${c2x.toFixed(1)},${c2y.toFixed(1)} ${p2[0].toFixed(1)},${p2[1].toFixed(1)}`;}
+  return d+'Z';
+}
+
+function drawFlower(done){
+  const svg=document.getElementById('flower-svg');
+  const msg=document.getElementById('flower-msg');
+  const cx=100,ground=168;
+  let h='';
+  h+=`<ellipse cx="${cx}" cy="${ground}" rx="38" ry="7" fill="#c8b890" opacity="0.4"/>`;
+  if(done===0){
+    h+=`<ellipse cx="${cx}" cy="${ground-4}" rx="9" ry="6" fill="#a08860" opacity="0.6"/>`;
+    h+=`<path d="M${cx-4},${ground-4} Q${cx},${ground-14} ${cx+4},${ground-4}" stroke="#8a7040" stroke-width="1.5" fill="none" opacity="0.5"/>`;
+    msg.textContent='zasiej pierwszy nawyk…';
+    svg.innerHTML=h;return;
+  }
+  const stemH=Math.min(18+(done/TOTAL)*105,108);
+  const stemTop=ground-stemH;
+  h+=`<path d="M${cx},${ground} Q${cx+8},${ground-stemH*0.45} ${cx-3},${stemTop}" stroke="#4a7a28" stroke-width="5" fill="none" stroke-linecap="round"/>`;
+  h+=`<path d="M${cx},${ground} Q${cx+10},${ground-stemH*0.45} ${cx-2},${stemTop}" stroke="#7aaa48" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.5"/>`;
+  if(done>=2){const lx=cx-2,ly=ground-stemH*0.28;h+=`<path d="M${lx},${ly} Q${lx-20},${ly-18} ${lx-28},${ly-8} Q${lx-14},${ly+4} ${lx},${ly}Z" fill="#5a8a3a" opacity="0.8"/>`;h+=`<path d="M${lx},${ly} Q${lx-18},${ly-14} ${lx-24},${ly-6}" stroke="#7aaa58" stroke-width="0.8" fill="none" opacity="0.5"/>`;}
+  if(done>=3){const lx=cx-3,ly=ground-stemH*0.52;h+=`<path d="M${lx},${ly} Q${lx+22},${ly-16} ${lx+30},${ly-5} Q${lx+16},${ly+5} ${lx},${ly}Z" fill="#6a9a48" opacity="0.75"/>`;h+=`<path d="M${lx},${ly} Q${lx+20},${ly-12} ${lx+26},${ly-4}" stroke="#8aba60" stroke-width="0.8" fill="none" opacity="0.45"/>`;}
+  if(done>=4){const lx=cx+1,ly=ground-stemH*0.73;h+=`<path d="M${lx},${ly} Q${lx-18},${ly-14} ${lx-24},${ly-4} Q${lx-10},${ly+4} ${lx},${ly}Z" fill="#5a8a3a" opacity="0.7"/>`;}
+  if(done>=5){
+    const numPetals=Math.min((done-4)*2+1,8);
+    const palettes=[
+      {base:'#d4789a',light:'#f0b0cc'},{base:'#c86888',light:'#e8a8c0'},
+      {base:'#cc7090',light:'#eeaac8'},{base:'#d480a0',light:'#f0b8d0'},
+      {base:'#c06880',light:'#e8a0b8'},{base:'#da8aaa',light:'#f4bcd4'},
+      {base:'#c87898',light:'#ecb0c8'},{base:'#d07090',light:'#f0b0c8'},
+    ];
+    for(let i=0;i<numPetals;i++){
+      const angle=(i/8)*Math.PI*2-Math.PI/2;
+      const px=cx+Math.cos(angle)*22,py=stemTop+Math.sin(angle)*22;
+      const p=palettes[i%palettes.length];const seed=i*1.9+0.7;
+      h+=`<path d="${blob(px,py,15,14,seed)}" fill="${p.base}" opacity="0.8"/>`;
+      h+=`<path d="${blob(px,py,9,10,seed+0.8)}" fill="${p.light}" opacity="0.5"/>`;
+    }
+  }
+  if(done>=5){
+    const isBloom=done===TOTAL;const cr=isBloom?17:11;
+    h+=`<path d="${blob(cx,stemTop,cr,16,3.2)}" fill="${isBloom?'#f0c030':'#e0b040'}" opacity="0.95"/>`;
+    h+=`<path d="${blob(cx,stemTop,cr*0.65,12,4.8)}" fill="${isBloom?'#f8d858':'#ecc858'}" opacity="0.75"/>`;
+    h+=`<path d="${blob(cx,stemTop,cr*0.35,8,2.1)}" fill="${isBloom?'#fff0a0':'#f8e080'}" opacity="0.6"/>`;
+    for(let i=0;i<8;i++){const a=(i/8)*Math.PI*2;h+=`<circle cx="${(cx+Math.cos(a)*cr*0.42).toFixed(1)}" cy="${(stemTop+Math.sin(a)*cr*0.42).toFixed(1)}" r="1.5" fill="#a07010" opacity="0.4"/>`;}
+  }
+  if(done===TOTAL){
+    const sp=[[-36,-44,'#f0aac0',6],[34,-40,'#f8c878',5],[-30,-20,'#b0d890',4],[40,-16,'#d898c0',4],[-42,-4,'#f0d050',3],[42,2,'#a8d870',3]];
+    for(const[sx,sy,sc,sr]of sp){h+=`<path d="${blob(cx+sx,stemTop+sy,sr,8,sr*1.3)}" fill="${sc}" opacity="0.5"/>`;}
+    h+=`<text x="${cx}" y="${stemTop-32}" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="12" fill="#b89840" opacity="0.7">✦</text>`;
+    h+=`<text x="${cx-36}" y="${stemTop-20}" text-anchor="middle" font-size="9" fill="#d898c0" opacity="0.5">✦</text>`;
+    h+=`<text x="${cx+38}" y="${stemTop-26}" text-anchor="middle" font-size="8" fill="#a0c870" opacity="0.45">✦</text>`;
+    msg.textContent='ogród w pełnym rozkwicie ✦';
+  } else {
+    const msgs=['','kiełkuje…','łodyżka sięga ku słońcu','pierwszy liść 🌿','drugi liść','trzeci liść','pąki się formują…','płatki się rozwijają…','ogród w pełnym rozkwicie ✦'];
+    msg.textContent=msgs[Math.min(done,msgs.length-1)]||'';
+  }
+  svg.innerHTML=h;
+}
+
+function render(){
+  const list=document.getElementById('habits');
+  list.innerHTML='';
+  let done=0,bestAll=0;
+  HABITS.forEach(h=>{
+    const isDone=!!(state.days[today]&&state.days[today][h.id]);
+    if(isDone)done++;
+    const s=streak(h.id),b=bestStreak(h.id);
+    if(b>bestAll)bestAll=b;
+    const l7=last7(h.id);
+    const hot=s>=3;
+    const card=document.createElement('div');
+    card.className='hcard'+(isDone?' done':'');
+    card.setAttribute('role','checkbox');
+    card.setAttribute('aria-checked',isDone?'true':'false');
+    card.setAttribute('aria-label',h.name);
+    card.setAttribute('tabindex','0');
+    card.onclick=()=>toggle(h.id);
+    card.onkeydown=e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault();toggle(h.id);}};
+    const dots=l7.map(d=>{if(d.done)return'<div class="hdot on"></div>';if(d.isToday)return'<div class="hdot cur"></div>';return'<div class="hdot"></div>';}).join('');
+    card.innerHTML=`
+      <div class="hcircle"><span class="hicon" aria-hidden="true">${h.icon}</span><span class="hchk" aria-hidden="true">✓</span></div>
+      <div class="hinfo"><div class="hname">${h.name}</div><div class="hdots">${dots}</div></div>
+      <div class="hstreak"><div class="hstreak-num${hot?' hot':''}">${s}${hot?' 🔥':''}</div><div class="hstreak-lbl">dni z rzędu</div></div>`;
+    list.appendChild(card);
+  });
+  document.getElementById('s-done').textContent=done;
+  document.getElementById('s-best').textContent=bestAll;
+  document.getElementById('s-pct').textContent=Math.round(done/TOTAL*100)+'%';
+  drawFlower(done);
+}
+
+const now=new Date();
+document.getElementById('date-lbl').textContent=now.toLocaleDateString('pl-PL',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+loadState();
+render();
+</script>
+</body>
+</html>
